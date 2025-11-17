@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  --primary: #0f172a;
+  --primary-foreground: #f9fafb;
+
+  /* charts */
+  --chart-grid: #e5e7eb;
+  --chart-line-primary: #0f172a;
+  --chart-line-secondary: #22c55e;
+  --chart-bar: #0f172a;
+}
+
+.dark {
+  --background: #020617;             /* slate-950 */
+  --foreground: #e5e7eb;             /* slate-200 */
+  --card: #020617;                   /* same as background, можно сделать чуть светлее */
+  --border: #1f2937;                 /* slate-800 */
+  --muted: #020617;
+  --muted-foreground: #94a3b8;       /* slate-400 */
+
+  --primary: #e5e7eb;                /* светлая кнопка на тёмном фоне */
+  --primary-foreground: #020617;
+
+  --chart-grid: #1f2937;
+  --chart-line-primary: #f97316;     /* orange-500 */
+  --chart-line-secondary: #22c55e;   /* green-500 */
+  --chart-bar: #38bdf8;              /* sky-400 */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Base select styling for both themes */
+select {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Dropdown menu options */
+select option {
+  background-color: var(--card);
+  color: var(--foreground);
+}
+
+/* Just in case, slightly brighter in dark mode */
+.dark select option {
+  background-color: #020617; /* почти чёрный фон */
+  color: #e5e7eb;            /* светлый текст */
+}
