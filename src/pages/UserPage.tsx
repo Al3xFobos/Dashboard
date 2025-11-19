@@ -45,7 +45,7 @@ function segmentLabel(segment: Segment) {
   }
 }
 
-export function UsersPage() {
+export function UserPage() {
   const [segment, setSegment] = useState<Segment>('all');
 
   const enriched = useMemo(
@@ -113,26 +113,29 @@ export function UsersPage() {
               <thead>
                 <tr className="border-b border-border bg-muted/40 text-left">
                   <th className="px-2 py-1 font-medium">Name</th>
-                  <th className="px-2 py-1 font-medium">Email</th>
-                  <th className="px-2 py-1 font-medium text-right">Last seen</th>
-                  <th className="px-2 py-1 font-medium text-right">
-                    Sessions (30d)
-                  </th>
-                  <th className="px-2 py-1 font-medium text-right">Segment</th>
+<th className="hidden px-2 py-1 font-medium sm:table-cell">Email</th>
+<th className="px-2 py-1 font-medium text-right">Last seen</th>
+<th className="px-2 py-1 font-medium text-right">Sessions (30d)</th>
+<th className="hidden px-2 py-1 font-medium text-right sm:table-cell">
+  Segment
+</th>
+
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((u) => (
                   <tr key={u.id} className="border-b border-border last:border-0">
                     <td className="px-2 py-1 text-xs font-medium">{u.name}</td>
-                    <td className="px-2 py-1 text-xs text-muted-foreground">
-                      {u.email}
-                    </td>
-                    <td className="px-2 py-1 text-xs text-right">
-                      {u.lastSeenDays === 0
-                        ? 'today'
-                        : `${u.lastSeenDays}d ago`}
-                    </td>
+<td className="hidden px-2 py-1 text-xs text-muted-foreground sm:table-cell">
+  {u.email}
+</td>
+...
+<td className="hidden px-2 py-1 text-xs text-right sm:table-cell">
+  <span className="inline-flex rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">
+    {segmentLabel(u.segment)}
+  </span>
+</td>
+
                     <td className="px-2 py-1 text-xs text-right">
                       {u.sessionsLast30d}
                     </td>
